@@ -17,20 +17,15 @@ import android.graphics.Point;
 
 public class GameView extends View {
     private Bitmap image;
-//    private ArrayList<Integer> xPoints = new ArrayList<Integer>();
-//    private ArrayList<Integer> yPoints = new ArrayList<Integer>();
-    private ArrayList<Point> points = new ArrayList<Point>();
+   
+    Stroke stroke = new Stroke();
+    
     private boolean killed = false;
     private boolean newUnicorn = true;
     
     private Point imagePoint = new Point(-150, 100);
-//    private int imagePointX = -150;
-//    private int imagePointY = 100;
-    
+
     private int score = 0;
-    private int yChange = 0;
-    private static final int lineColor = Color.RED;
-    private static final int lineWidth = 10;
     public long startTime;
     public long endTime;
 
@@ -57,8 +52,8 @@ public class GameView extends View {
     	// resets the position of the unicorn if one is killed or reaches the right edge
     	if (newUnicorn || imagePoint.x >= this.getWidth()) {
     		imagePoint.x = -150;
-    		imagePoint.y = (int)(Math.random() * 200 + 200);
-    		yChange = (int)(10 - Math.random() * 20);
+    		imagePoint.y = (int)(Math.random() * 200 + 200);    		
+    		stroke.yChange =  (int)(10 - Math.random() * 20);
     		newUnicorn = false;
     		killed = false;
     	}
@@ -77,19 +72,8 @@ public class GameView extends View {
     	// draws the unicorn at the specified point
 		canvas.drawBitmap(image, imagePoint.x, imagePoint.y, null);
     	
-		// draws the stroke
-    	if (points.size() > 1) {
-    		for (int i = 0; i < points.size()-1; i++) {
-    			int startX = points.get(i).x;
-    			int stopX = points.get(i+1).x;
-    			int startY = points.get(i).y;
-    			int stopY = points.get(i+1).y;
-    			Paint paint = new Paint();
-    			paint.setColor(lineColor);
-    			paint.setStrokeWidth(lineWidth);
-    			canvas.drawLine(startX, startY, stopX, stopY, paint);
-    		}
-    	}
+		
+		stroke.drawStroke(canvas);
     	
     }
 
@@ -99,13 +83,13 @@ public class GameView extends View {
     public boolean onTouchEvent(MotionEvent event) {
     	
     	if (event.getAction() == MotionEvent.ACTION_DOWN) {
-    		points.add(new Point((int)event.getX(), (int)event.getY()));
+    		stroke.addPoint(new Point((int)event.getX(), (int)event.getY()));
     	}
     	else if (event.getAction() == MotionEvent.ACTION_MOVE) {
-    		points.add(new Point((int)event.getX(), (int)event.getY()));
+    		stroke.addPoint(new Point((int)event.getX(), (int)event.getY()));
     	}
     	else if (event.getAction() == MotionEvent.ACTION_UP) {
-    		points.clear();
+    		stroke.clearPoints();
     	}
     	else {
     		return false;
@@ -145,9 +129,7 @@ public class GameView extends View {
     			// note: you can change these values to make the unicorn go faster/slower
     			Thread.sleep(10); 
     			imagePoint.x += 10;
-    			imagePoint.y += yChange;
-//    			imagePointX += 10; 
-//    			imagePointY += yChange; 
+    			imagePoint.y += stroke.yChange;
     		} 
     		catch (Exception e) { }
     		// the return value is passed to "onPostExecute" but isn't actually used here
