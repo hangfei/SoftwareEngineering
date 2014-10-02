@@ -67,9 +67,10 @@ public class GameActivity extends ActionBarActivity {
 	    	        	   dialog.cancel();
 	    	        	   // then start the unicorn moving across the screen
 	    	               GameView gv = (GameView)findViewById(R.id.gameView);
-	    	               GameView.BackgroundDrawingTask t = gv.new BackgroundDrawingTask();
+	    	               
+	    	               BackgroundDrawingTask t = gv.drawingTask;
 	    	               t.execute();
-	    	               gv.startTime = System.currentTimeMillis();
+	    	               t.startTime = System.currentTimeMillis();
 	    	           }
 	    	         });
     		return builder.create();
@@ -78,7 +79,9 @@ public class GameActivity extends ActionBarActivity {
 	    	AlertDialog.Builder builder = new AlertDialog.Builder(this);
             // figure out which message to display
             GameView gv = (GameView)findViewById(R.id.gameView);
-	    	long time = gv.endTime - gv.startTime;
+            // add BackgroundDrawingTask by LHF
+            BackgroundDrawingTask t = gv.drawingTask;
+	    	long time = t.endTime - t.startTime;
 	    	// a little magic to convert to tenths of a second
 	    	float displayTime = (time / 100) / (float)10.0;
 	    	if (bestTime == 10000000) {
