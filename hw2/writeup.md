@@ -19,3 +19,4 @@ HW2
 
 
 #####In Step 10, which internal quality metric became worse in the GameView class (or one of its methods)? Be sure to give "before" and "after" measurements.
+- reliability is lower
