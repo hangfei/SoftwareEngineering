@@ -12,7 +12,7 @@ HW2
 - onTouchEvent()  
   - 
 - Constructor()
-  - 
+  - There are duplicate code for creating image. So I create a method to wrap these two statements. Instead of calling them twice, now only need to call the newly create method init().
 
 #####In Step 10, which internal quality metric became better in the GameView class (or one of its methods)? Be sure to give "before" and "after" measurements.
 
