@@ -24,5 +24,10 @@ After:
 m = 7  
 A = 12 / 3 = 4  
 
+So after refactoring, the LCOM decreased, which indicate a improvement in cohesion of the methods and fields. Thus the refactoring increases understandability of the code.
+
 #####In Step 10, which internal quality metric became worse in the GameView class (or one of its methods)? Be sure to give "before" and "after" measurements.
 - reliability is lower
+
+
+After refactoring, the instability of the code increased. Thus
