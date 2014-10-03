@@ -14,6 +14,7 @@ I used pull up mehthod refactoring pattern to address the problem.
   - There are duplicate code for creating image. So I create a method to wrap these two statements. Instead of calling them twice, now only need to call the newly create method init().
 - onTouchEvent()  
   - In the first two if(or if else), they are doing the same thing. Thus they could be merged into one.  
+
 I used extract method refactoring pattern.  
 
 #####In Step 10, which internal quality metric became better in the GameView class (or one of its methods)? Be sure to give "before" and "after" measurements.
