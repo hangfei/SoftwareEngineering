@@ -46,8 +46,8 @@ fan-out: 1
 Instability: 0.5  
 
 After:  
-fan-in: 2 
-fan-out: 3  
+fan-in: 2  
+fan-out: 3   
 Instabilitiy: 0.6
 
 After refactoring, the instability of the code increased.
