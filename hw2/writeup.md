@@ -1,4 +1,4 @@
-HW2
+CIS573 HW2
 ========
 
 #####In Step 2, which refactoring pattern did you use to address the duplicate code in MainActivity and GameActivity?
