@@ -40,13 +40,13 @@ So after refactoring, the LCOM decreased, which indicate a improvement in cohesi
 And the MCC also decreased, which indicate a decrease in structural complexity. This will help improve the understandability of the code.
 
 #####In Step 10, which internal quality metric became worse in the GameView class (or one of its methods)? Be sure to give "before" and "after" measurements.
-Before:
-fan-in: 1
-fan-out: 1
-Instability: 0.5
+Before:  
+fan-in: 1  
+fan-out: 1  
+Instability: 0.5  
 
-After:
-fan-in: 2  
+After:  
+fan-in: 2 
 fan-out: 3  
 Instabilitiy: 0.6
 
