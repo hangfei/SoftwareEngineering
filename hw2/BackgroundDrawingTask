@@ -1,0 +1,63 @@
+package edu.upenn.cis573.hwk2;
+
+import android.os.AsyncTask;
+
+/*
+ * This inner class is responsible for making the unicorn appear to move.
+ * When "exec" is called on an object of this class, "doInBackground" gets
+ * called in a background thread. It just waits 10ms and then updates the
+ * image's position. Then "onPostExecute" is called.
+ */
+class BackgroundDrawingTask extends AsyncTask<Integer, Void, Integer> {
+	private Image image;
+	private Stroke stroke;
+	protected int score = 0;
+	public long startTime;
+	public long endTime;
+	protected GameView gameView;
+	GameActivity  parentActivity;
+
+	public BackgroundDrawingTask(Image image, Stroke stroke, GameView gameView, GameActivity gameActivity) {
+		this.image = image;
+		this.stroke = stroke;
+		this.gameView = gameView;
+		parentActivity = gameActivity;
+	}
+	// this method gets run in the background
+	protected Integer doInBackground(Integer... args) {
+		try { 
+			// note: you can change these values to make the unicorn go faster/slower
+			Thread.sleep(10); 
+			image.imagePoint.x += 10;
+			image.imagePoint.y += stroke.yChange;
+		} 
+		catch (Exception e) { }
+		// the return value is passed to "onPostExecute" but isn't actually used here
+		return 1; 
+	}
+	
+	public void setScore(int score) {
+		System.out.println(score);
+		this.score = score;
+	}
+	
+	// this method gets run in the UI thread
+	protected void onPostExecute(Integer result) {
+		// redraw the View
+		// ?
+		gameView.invalidate();
+		
+		if (score < 10) {
+			// need to start a new thread to make the unicorn keep moving
+			BackgroundDrawingTask task = new BackgroundDrawingTask(image, stroke, gameView, parentActivity);
+			task.execute();
+		}
+		else {
+			// game over, man!
+			endTime = System.currentTimeMillis();
+			// these methods are deprecated but it's okay to use them... probably.
+			parentActivity.removeDialog(1);
+			parentActivity.showDialog(1);
+		}
+	}    	
+}
