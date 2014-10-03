@@ -9,10 +9,11 @@ HW2
 - Primitive type obssession
 
 ####In Step 6, where was the duplicate code that you refactored, and which refactoring pattern did you use?
-- onTouchEvent()  
-  - 
 - Constructor()
   - There are duplicate code for creating image. So I create a method to wrap these two statements. Instead of calling them twice, now only need to call the newly create method init().
+- onTouchEvent()  
+  - In the first two if(or if else), they are doing the same thing. Thus they could be merged into one.
+
 
 #####In Step 10, which internal quality metric became better in the GameView class (or one of its methods)? Be sure to give "before" and "after" measurements.
 
