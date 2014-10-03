@@ -21,12 +21,13 @@ I used extract method refactoring pattern.
 The cohesion, measured by LCOM, within a method is better than before. In detail:  
 Before:  
 m = 13  
-A = 4
-LCOM = 
+A = 22 / 13 = 1.7
+LCOM = 0.94
 
 After:  
 m = 7  
-A = 12 / 3 = 4  
+A = 12 / 3 = 4 
+LCOM = 0.5
 
 The structural complexity(MCC) is lower than before. In detail:  
 Before:  
