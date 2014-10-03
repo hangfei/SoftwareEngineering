@@ -9,7 +9,7 @@ I used pull up mehthod refactoring pattern to address the problem.
 - Primitive obssession  
 - Duplicate code  
 
-####In Step 6, where was the duplicate code that you refactored, and which refactoring pattern did you use?
+#####In Step 6, where was the duplicate code that you refactored, and which refactoring pattern did you use?
 - Constructor()
   - There are duplicate code for creating image. So I create a method to wrap these two statements. Instead of calling them twice, now only need to call the newly create method init().
 - onTouchEvent()  
