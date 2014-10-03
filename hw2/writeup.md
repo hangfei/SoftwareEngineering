@@ -5,9 +5,8 @@ HW2
 
 
 
-#####In Step 3, which two code smells (from the ones discussed in class) are exhibited by GameView via its use of separate ArrayLists to represent the x- and y-coordinates of the stroke points?  
+#####In Step 3, which two code smells (from the ones discussed in class) are exhibited by GameView via its use of separate ArrayLists to represent the x- and y-coordinates of the stroke points?
 - Primitive type obssession
-- 
 
 ####In Step 6, where was the duplicate code that you refactored, and which refactoring pattern did you use?
 - onTouchEvent()  
