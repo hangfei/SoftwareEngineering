@@ -1,0 +1,40 @@
+package edu.upenn.cis573.hwk2;
+
+import android.content.res.Resources;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.Point;
+
+public class Image{
+	public Bitmap image;
+	public Point imagePoint = new Point(-150, 100);
+	public Resources resources;
+	int width;
+	int height;
+	
+	public Image(Resources resources) {
+		this.resources = resources;
+		image = BitmapFactory.decodeResource(resources, R.drawable.explosion);
+		image = Bitmap.createScaledBitmap(image, 150, 150, false);
+		this.width = image.getWidth();
+		this.height = image.getHeight();
+	}
+    
+    public Bitmap getBitmap() {
+    	return image;
+    }
+
+	public void setImageToExplosion() {
+		image = BitmapFactory.decodeResource(resources, R.drawable.explosion);
+		image = Bitmap.createScaledBitmap(image, 150, 150, false);
+	}
+	
+	public void setImageToUnicorn() {
+		image = BitmapFactory.decodeResource(resources, R.drawable.unicorn);
+ 	    image = Bitmap.createScaledBitmap(image, 150, 150, false);
+	}
+	
+	public boolean withinBound(float x, float y) {
+		return  x > imagePoint.x && x < imagePoint.x + width && y > imagePoint.y && y < imagePoint.y + height;
+	}
+}
