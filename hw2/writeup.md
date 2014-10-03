@@ -18,19 +18,21 @@ I used pull up mehthod refactoring pattern to address the problem.
 I used extract method refactoring pattern.  
 
 #####In Step 10, which internal quality metric became better in the GameView class (or one of its methods)? Be sure to give "before" and "after" measurements.
-The cohesion within a method is better than before. In detail:  
+The cohesion, measured by LCOM, within a method is better than before. In detail:  
 Before:  
-m = 13
+m = 13  
+A = 4
+LCOM = 
 
 After:  
 m = 7  
 A = 12 / 3 = 4  
 
-The structural complexity(MCC) is lower than before. In detail:
-Before:
-Average MCC: 8 / 4 = 2  
+The structural complexity(MCC) is lower than before. In detail:  
+Before:  
+Average MCC: 8 / 4 = 2   
 
-After:
+After:  
 Average MCC: 6 / 5 = 1.2
 
 
